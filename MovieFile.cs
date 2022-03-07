@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace MediaLibrary
 {
@@ -65,6 +66,10 @@ namespace MediaLibrary
                         // if there is another item in the array it should be run time
                         movie.runningTime = TimeSpan.Parse(details[2]);
                     }
+
+                    StringBuilder joinedGenres = new StringBuilder().AppendJoin(", ", movie.genres);
+
+                    Console.WriteLine($"ID: {movie.mediaId} \nTitle: {movie.title} \nDirector:{movie.director} \nRun Time: {movie.runningTime} \nMovie Genres: {joinedGenres}\n");
                     Movies.Add(movie);
                 }
                 // close file when done
